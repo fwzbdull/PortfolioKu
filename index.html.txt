@@ -111,11 +111,11 @@
 
         <section id="education">
             <h2>[Education]</h2>
-            <h4>IDN Boarding School</h4>
-            <p><em><ul><li>Major in Computer Systems Network and Telecommunications.</li></ul></em></p>
-
             <h4>Politeknik Elektronika Negeri Surabaya</h4>
-            <p><em><ul><li>Major in Internet Engineering Technology</li></ul></em></p>
+            <p><em>Major in Internet Engineering Technology.</em></p>
+
+            <h4>IDN Boarding School</h4>
+            <p><em>Major in Computer Systems Network and Telecommunications.</em></p>
 
         </section>
 
