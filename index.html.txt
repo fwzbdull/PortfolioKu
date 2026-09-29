@@ -1,16 +1,137 @@
-<!DOCTYPE html> 
-<html lang="id"> 
+<!DOCTYPE html>
+<html lang="id">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Latihan Git Pertama</title>
-   <link rel="stylesheet" href="style.css"> 
-   </head>
-   <body>   
-   <h1>Halo, Git!</h1>   
-   <p>Ini adalah project HTML pertama saya yang diunggah ke GitHub.</p>   
-   <ul>     
-   <li>Nama: (isi nama kamu)</li>
-   <li>NIM: (isi NIM kamu)</li>     
-   <li>Prodi: (isi prodi kamu)</li>   
-   </ul> </body> </html> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Fawwaz Abdul Ghani</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#aboutme">AboutMe</a></li>
+                <li><a href="#skill">Skill</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+  
+        <section id="home">
+            <h1>[Portfolio]</h1>
+            <h2>> Fawwaz Abdul Ghani</h2>
+            <h3>[1]Network Engineer</h3>
+        </section>
+
+        <hr>
+
+
+        <section id="aboutme">
+            <h2>[About Me]</h2>
+            
+            
+            <img src="ghani_image.png" alt="Foto Profil Fawwaz" width="150">
+            
+            <p>Mahasiswa PENS jurusan Teknologi Rekayasa Internet. Memiliki pengalaman organisasi sebagai pengurus OSIS bidang kejuruan (TKJ) selama satu tahun dan sebagai anggota panitia kompetisi IDN IT Fest 2023. Menguasai keahlian di bidang Jaringan Komputer, Mikrotik, Cisco, Fortinet, Palo Alto, Juniper, serta pemecahan masalah (troubleshooting).</p>
+            
+            <h3>Kontak:</h3>
+            <ul>
+                <li>Telepon: +62 8989711798</li>
+                <li>LinkedIn: <a href="https://linkedin.com/in/fwzghani/">linkedin.com/in/fwzghani/</a></li>
+                <li>Email: <a href="mailto:fawwazghani41@gmail.com">fawwazghani41@gmail.com</a></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="skill">
+            <h2>[Skill]</h2>
+            <ul>
+                <li><strong>> Mikrotik:</strong> Management, Routing, Wireless, Firewall</li>
+                <li><strong>> Cisco:</strong> Routing, Switching, IP Services, Firewall, Wireless</li>
+                <li><strong>> Juniper:</strong> Routing</li>
+                <li><strong>> Palo-Alto:</strong> Firewall, Management</li>
+                <li><strong>> Fortinet:</strong> Firewall</li>
+            </ul>
+        </section>
+
+        <hr>
+
+
+        <section id="experience">
+            <h2>[Experience]</h2>
+            <h3>[Work]</h3>
+
+            <h4>PT.Sisindokom Lintasbuana</h4>
+            <p><em>Jakarta, 04/2025 - 07/2025</em></p>
+            <ul>
+                <li>Upgrade 7 device Cisco OS ISR 1100.</li>
+                <li>Configure Cisco ISR 1100 Ip Address, SSH.</li>
+                <li>Support SD-WAN PosIndonesia 117 site using Fortigate 40F.</li>
+                <li>Support SD-WAN Astra International 39 site using Fortigate 60F, 100F.</li>
+            </ul>
+
+            <h4>PT.Sangga Data Nusantara</h4>
+            <p><em>Indonesia, 12/2024 - 12/2024</em></p>
+            <ul>
+               <li>Upgrade 20 device Cisco OS AP 9115AX.</li>
+               <li>Configure Cisco AP 9115AX Ip Address, Hostname, Password, etc.</li>
+               <li>Installation of 7 Cisco C9300 devices to the rack.</li>
+               <li>Checking Cisco AP connect to SDN.</li>
+            </ul>
+
+            <h4>PT.Mitra Sistem Informatika</h4>
+            <p><em>Indonesia, 05/2024 - 11/2024</em></p>
+            <ul>
+                  <li>Upgrade 5 device Palo Alto OS from version 8 to 10 in Palo Alto 220R.</li>
+                  <li>Presenting the installation of layer 2/3 Palo Alto 220R.</li>
+                  <li>Migration 4 switch Cisco WS-C3750x to Cisco C9200.</li>
+                  <li>Setting up Ruijie AP-840-L connect to internet</li>
+                  <li>Setting up switch Cisco C1300 Vlan and Trunk</li>
+            </ul>
+
+            <h4>PT.Borneo Cakrawala Media</h4>
+            <p><em>Indonesia, 03/2024 - 04/2024</em></p>
+            <ul>
+               <li>Immigrate the Mikrotik router configuration to the Vyos router device.</li>
+               <li>Configure firewall in Vyos router from Mikrotik router device.</li>
+            </ul>
+
+            <h4>Kolej Vokasional Sungai Buloh</h4>
+            <p><em>Sungai Buloh, Malaysia 16th - 28th Oct 2023</em></p>
+            <ul>
+               <li>Participating in International Collaborative Visit Between Sungai Buloh Vocational College (Malaysia) and IDN Vocational High School (Indonesia) for 10 Days.</li>
+            </ul>
+
+        </section>
+
+        <hr>
+
+        <section id="education">
+            <h2>[Education]</h2>
+            <h4>IDN Boarding School</h4>
+            <p><em><ul><li>Major in Computer Systems Network and Telecommunications.</li></ul></em></p>
+
+            <h4>Politeknik Elektronika Negeri Surabaya</h4>
+            <p><em><ul><li>Major in Internet Engineering Technology</li></ul></em></p>
+
+
+        </section>
+
+      
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2026 Fawwaz Abdul Ghani. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
