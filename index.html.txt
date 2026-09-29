@@ -34,12 +34,8 @@
 
         <section id="aboutme">
             <h2>[About Me]</h2>
-            
-            
             <img src="ghani_image.png" alt="Foto Profil Fawwaz" width="150">
-            
             <p>Mahasiswa PENS jurusan Teknologi Rekayasa Internet. Memiliki pengalaman organisasi sebagai pengurus OSIS bidang kejuruan (TKJ) selama satu tahun dan sebagai anggota panitia kompetisi IDN IT Fest 2023. Menguasai keahlian di bidang Jaringan Komputer, Mikrotik, Cisco, Fortinet, Palo Alto, Juniper, serta pemecahan masalah (troubleshooting).</p>
-            
             <h3>Kontak:</h3>
             <ul>
                 <li>Telepon: +62 8989711798</li>
@@ -121,10 +117,8 @@
             <h4>Politeknik Elektronika Negeri Surabaya</h4>
             <p><em><ul><li>Major in Internet Engineering Technology</li></ul></em></p>
 
-
         </section>
 
-      
     </main>
 
     <hr>
