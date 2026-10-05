@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --blue: #0000ff;
+  --green: #2ee62e;
+  --red: #ff2f17;
+  --chrome-bg: #3a3a3a;
+  --chrome-text: #9b9b9b;
+  --dot-red: #ed6a5e;
+  --dot-yellow: #f5bf4f;
+  --dot-green: #61c554;
+
+  --font-mono: "Fira Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --nav-h: clamp(3.25rem, 4vw, 4.8rem);
+  --pad-x: clamp(1rem, 2.2vw, 2.75rem);
+
+  --fs-nav: clamp(0.9rem, 2.1vw, 2.5rem);
+  --fs-body: clamp(0.9rem, 2.1vw, 2.5rem);
+  --fs-title: clamp(1.8rem, 4.2vw, 5rem);
+  --fs-hero: clamp(1.3rem, 3.9vw, 4.7rem);
+  --fs-hero-sub: clamp(1.1rem, 3.6vw, 4.3rem);
+  --fs-brand: clamp(1.2rem, 2.1vw, 2.5rem);
+  --fs-footer: clamp(0.8rem, 1.46vw, 1.75rem);
+}
+
+/* ---------- Reset & dasar ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: var(--nav-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-mono);
+  line-height: 1.22;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- Navbar ---------- */
+.navbar,
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 2.2vw;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  padding: 0 3.4vw;
+  background: #fff;
+}
+
+.navbar a {
+  color: #000;
+  font-size: var(--fs-nav);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.navbar a:hover,
+.navbar a.active,
+.navbar a[aria-current] {
+  color: var(--blue);
+}
+
+/* ---------- Layout section ---------- */
+.home,
+.about,
+.skill,
+.experience {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.section-title {
+  margin: 0 0 0.3vw;
+  color: #fff;
+  font-size: var(--fs-title);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ---------- Komponen: jendela terminal "Bash" ---------- */
+.terminal {
+  --chrome: clamp(0.8rem, 2.08vw, 2.5rem);
+  padding: 0 calc(var(--chrome) * 0.2) calc(var(--chrome) * 0.2);
+  background: var(--chrome-bg);
+  border-radius: calc(var(--chrome) * 0.7);
+}
+
+.terminal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.1em;
+  padding-left: 0.6em;
+  font-size: var(--chrome);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 0.375em;
+}
+
+.terminal-dots span {
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  background: var(--dot-red);
+}
+
+.terminal-dots span:nth-child(2) {
+  background: var(--dot-yellow);
+}
+
+.terminal-dots span:nth-child(3) {
+  background: var(--dot-green);
+}
+
+.terminal-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--chrome-text);
+  font-family: var(--font-ui);
+  pointer-events: none;
+}
+
+.terminal-body {
+  background: #000;
+  color: var(--green);
+  font-size: var(--fs-body);
+  border-radius: calc(var(--chrome) * 0.5);
+}
+
+/* ---------- Home (Slide 5) ---------- */
+.home {
+  padding: 4vw 3.4vw 1.3vw;
+}
+
+.home .terminal {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.home .terminal-body {
+  display: grid;
+  flex: 1;
+  place-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.home-title,
+.home-name,
+.home-role {
+  margin: 0;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.home-title,
+.home-name {
+  font-size: var(--fs-hero);
+  font-weight: 400;
+}
+
+.home-name {
+  padding-left: 0.5em;
+}
+
+.home-role {
+  padding-left: 1.9em;
+  font-size: var(--fs-hero-sub);
+  font-weight: 400;
+}
+
+/* ---------- About (Slide 6) ---------- */
+.about {
+  padding: 3.6vw var(--pad-x) 2vw;
+}
+
+.about .section-title {
+  margin-bottom: 2vw;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  column-gap: 6.7vw;
+  padding-right: 6vw;
+}
+
+.about-text {
+  margin: 0;
+  font-size: var(--fs-body);
+  text-align: justify;
+}
+
+.about-side .terminal {
+  --chrome: clamp(0.7rem, 1.46vw, 1.75rem);
+}
+
+.about-side .terminal-body {
+  padding: 1.3vw 0;
+}
+
+.profile-photo {
+  width: clamp(7rem, 33%, 16.5rem);
+  aspect-ratio: 3 / 4;
+  margin-inline: auto;
+  object-fit: cover;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.75vw;
+  margin: 1.3vw 0 0;
+  padding: 0;
+  font-size: var(--fs-body);
+  list-style: none;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.9vw, 2.3rem);
+}
+
+.contact-icon {
+  flex: none;
+  width: clamp(1.5rem, 2.9vw, 3.5rem);
+  height: auto;
+}
+
+.contact-item a {
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.contact-item a[href^="mailto:"] {
+  text-decoration: underline;
+}
+
+/* ---------- Skill (Slide 7) & Experience (Slide 8) ---------- */
+.skill,
+.experience {
+  padding: 1.2vw var(--pad-x) 1.3vw;
+}
+
+.skill .terminal,
+.experience .terminal {
+  --chrome: clamp(0.8rem, 2vw, 2.4rem);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.skill .terminal-body,
+.experience .terminal-body {
+  flex: 1;
+}
+
+/* Skill */
+.skill .terminal-body {
+  padding: 0.7em 0.55em;
+}
+
+.skill-name,
+.skill-desc {
+  margin: 0;
+}
+
+.skill-desc {
+  padding-left: 2ch; /* sejajar dengan nama setelah "> " */
+}
+
+.skill-item + .skill-item {
+  margin-top: 1.2em;
+}
+
+/* Experience */
+.experience .terminal-body {
+  padding: 1.1em 0.4em 1em;
+}
+
+.exp-label {
+  margin: 0 0 0.65em;
+}
+
+.exp-item + .exp-item {
+  margin-top: 0.6em; /* di slide jaraknya 0, ubah ke 0 jika ingin persis */
+}
+
+.exp-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 1.5em;
+}
+
+.exp-company,
+.exp-meta {
+  margin: 0;
+}
+
+.exp-meta {
+  margin-left: auto;
+  text-align: right;
+}
+
+.exp-list {
+  margin: 0;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+/* ---------- Footer (Slide 9) ---------- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.9vw 1rem 2.2vw;
+  background: var(--red);
+  color: #fff;
+  font-size: var(--fs-footer);
+  text-align: center;
+}
+
+.footer-brand {
+  margin: 0 0 0.4em;
+  font-size: var(--fs-brand);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.footer-copy {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.45vw, 3rem);
+  margin-top: 0.6em;
+}
+
+.footer-icons a {
+  display: block;
+  line-height: 0;
+}
+
+.footer-icons img,
+.footer-icons svg {
+  width: clamp(1.5rem, 2vw, 2.4rem);
+  height: auto;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  :root {
+    --nav-h: 3.25rem;
+  }
+
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .home {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .about {
+    padding-top: 1.5rem;
+  }
+
+  .about .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+    padding-right: 0;
+  }
+
+  .about-text {
+    text-align: left;
+  }
+
+  .about-side .terminal-body {
+    padding: 1rem 0;
+  }
+
+  .contact-list {
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .skill,
+  .experience {
+    padding-top: 0.75rem;
+  }
+
+  .section-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
