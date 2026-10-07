@@ -1,455 +1,182 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap");
-
 :root {
-  --blue: #0000ff;
-  --green: #2ee62e;
-  --red: #ff2f17;
-  --chrome-bg: #3a3a3a;
-  --chrome-text: #9b9b9b;
-  --dot-red: #ed6a5e;
-  --dot-yellow: #f5bf4f;
-  --dot-green: #61c554;
-
-  --font-mono: "Fira Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
-  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-
-  --nav-h: clamp(3.25rem, 4vw, 4.8rem);
-  --pad-x: clamp(1rem, 2.2vw, 2.75rem);
-
-  --fs-nav: clamp(0.9rem, 2.1vw, 2.5rem);
-  --fs-body: clamp(0.9rem, 2.1vw, 2.5rem);
-  --fs-title: clamp(1.8rem, 4.2vw, 5rem);
-  --fs-hero: clamp(1.3rem, 3.9vw, 4.7rem);
-  --fs-hero-sub: clamp(1.1rem, 3.6vw, 4.3rem);
-  --fs-brand: clamp(1.2rem, 2.1vw, 2.5rem);
-  --fs-footer: clamp(0.8rem, 1.46vw, 1.75rem);
+  --blue: #0101FA;
+  --green: #40EC29;
+  --red: #FF2F19;
+  --shell: #3a3a3a;
+  --nav-h: 4rem;
+  --bar: 4.5rem;   /* tinggi title bar terminal */
+  --dot: 2rem;     /* diameter titik merah/kuning/hijau */
+  --edge: 2.5rem;  /* jarak jendela terminal ke tepi layar */
+  --inset: 2.1rem; /* jarak teks ke tepi jendela terminal */
+  --mono: "Fira Mono", Courier New, monospace;
 }
 
-/* ---------- Reset & dasar ---------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  font-size: clamp(11px, 0.8334vw, 24px);
   scroll-padding-top: var(--nav-h);
 }
-
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }
 
 body {
-  margin: 0;
   background: var(--blue);
   color: #fff;
-  font-family: var(--font-mono);
+  font-family: var(--mono);
+  font-size: 2.5rem;
   line-height: 1.22;
-  -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: none;
 }
 
-a {
-  color: inherit;
-}
+a { color: inherit; }
+a:focus-visible { outline: 0.2rem solid currentColor; outline-offset: 0.3rem; }
+hr { display: none; }            
+ul { list-style: none; }
+h1, h2, h3, h4 { font-weight: 500; }
+main h2 { font-size: 4.7rem; line-height: 1.2; }
 
-a:focus-visible {
-  outline: 3px solid currentColor;
-  outline-offset: 3px;
-}
 
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
+header { position: sticky; top: 0 ; z-index: 10; background: #fff; color: #000; }
+nav ul { display: flex; align-items: center; gap: 2.6rem; height: var(--nav-h); padding: 0 4rem; }
+nav a { text-decoration: none; }
+nav a:hover { color: var(--blue); }
 
-/* ---------- Navbar ---------- */
-.navbar,
-.navbar ul {
-  display: flex;
-  align-items: center;
-  gap: 2.2vw;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  padding: 0 3.4vw;
-  background: #fff;
+#home::before, #skill::before, #experience::before, #aboutme::after {
+  content: "Bash";
+  border: 0.5rem solid var(--shell);
+  border-top: 0;
+  border-radius: 2rem;
+  color: #999899;
+  font-family: Segoe UI, "Roboto", Arial, sans-serif;
+  font-size: calc(var(--dot) * 1.3);
+  line-height: var(--bar);
+  text-align: center;
+  background:
+    radial-gradient(circle at 2rem calc(var(--bar) / 2), #ED6A5E calc(var(--dot) / 2.2), #0000 calc(var(--dot) / 2.2 + 0.1rem)),
+    radial-gradient(circle at 5rem calc(var(--bar) / 2), #F3BF4F calc(var(--dot) / 2.2), #0000 calc(var(--dot) / 2.2 + 0.1rem)),
+    radial-gradient(circle at 8rem calc(var(--bar) / 2), #61C554 calc(var(--dot) / 2.2), #0000 calc(var(--dot) / 2.2 + 0.1rem)),
+    linear-gradient(var(--shell) var(--bar), #000 var(--bar));
 }
-
-.navbar a {
-  color: #000;
-  font-size: var(--fs-nav);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.navbar a:hover,
-.navbar a.active,
-.navbar a[aria-current] {
-  color: var(--blue);
-}
-
-/* ---------- Layout section ---------- */
-.home,
-.about,
-.skill,
-.experience {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - var(--nav-h));
-  min-height: calc(100svh - var(--nav-h));
-}
-
-.section-title {
-  margin: 0 0 0.3vw;
-  color: #fff;
-  font-size: var(--fs-title);
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-/* ---------- Komponen: jendela terminal "Bash" ---------- */
-.terminal {
-  --chrome: clamp(0.8rem, 2.08vw, 2.5rem);
-  padding: 0 calc(var(--chrome) * 0.2) calc(var(--chrome) * 0.2);
-  background: var(--chrome-bg);
-  border-radius: calc(var(--chrome) * 0.7);
-}
-
-.terminal-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 2.1em;
-  padding-left: 0.6em;
-  font-size: var(--chrome);
-}
-
-.terminal-dots {
-  display: flex;
-  gap: 0.375em;
-}
-
-.terminal-dots span {
-  width: 0.75em;
-  height: 0.75em;
-  border-radius: 50%;
-  background: var(--dot-red);
-}
-
-.terminal-dots span:nth-child(2) {
-  background: var(--dot-yellow);
-}
-
-.terminal-dots span:nth-child(3) {
-  background: var(--dot-green);
-}
-
-.terminal-title {
+#home, #skill, #experience { position: relative; isolation: isolate; min-height: calc(100vh - var(--nav-h)); }
+#home::before, #skill::before, #experience::before {
   position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--chrome-text);
-  font-family: var(--font-ui);
-  pointer-events: none;
+  z-index: -1;
+  left: var(--edge);
+  right: var(--edge);
+  bottom: var(--edge);
 }
 
-.terminal-body {
-  background: #000;
-  color: var(--green);
-  font-size: var(--fs-body);
-  border-radius: calc(var(--chrome) * 0.5);
-}
 
-/* ---------- Home (Slide 5) ---------- */
-.home {
-  padding: 4vw 3.4vw 1.3vw;
-}
-
-.home .terminal {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-.home .terminal-body {
-  display: grid;
-  flex: 1;
+#home {
+  --bar: 5.2rem;
+  --dot: 1.9rem;
+  display:grid;
   place-content: center;
-  padding: 1.5rem 1rem;
+  justify-items:auto;
+  padding: calc(4.9rem + var(--bar)) 4rem 1.5rem;
+  color: var(--green);
 }
+#home::before { top: 4.9rem; left: 4rem; right: 4rem; bottom: 1.5rem; }
+#home h1, #home h2, #home h3 { font-size: 4.5rem; line-height: 1.24; }
+#home h2 { padding-left: 0.7ch; }
+#home h3 { padding-left: 2.8ch; }
 
-.home-title,
-.home-name,
-.home-role {
-  margin: 0;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-}
-
-.home-title,
-.home-name {
-  font-size: var(--fs-hero);
-  font-weight: 400;
-}
-
-.home-name {
-  padding-left: 0.5em;
-}
-
-.home-role {
-  padding-left: 1.9em;
-  font-size: var(--fs-hero-sub);
-  font-weight: 400;
-}
-
-/* ---------- About (Slide 6) ---------- */
-.about {
-  padding: 3.6vw var(--pad-x) 2vw;
-}
-
-.about .section-title {
-  margin-bottom: 2vw;
-}
-
-.about-content {
+#aboutme {
+  --bar: 3.5rem;
+  --dot: 1.7rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 7rem;
+  align-content: start;
   align-items: start;
-  column-gap: 6.7vw;
-  padding-right: 6vw;
+  padding: 5.5rem 7rem 2.5rem var(--edge);
+  min-height: calc(100vh - var(--nav-h));
 }
-
-.about-text {
-  margin: 0;
-  font-size: var(--fs-body);
-  text-align: justify;
+#aboutme > h2 { grid-column: 1 / -1; margin-bottom: 1.5rem; }
+#aboutme > p {  ;grid-column: 1; grid-row: 2 / span 3; text-align: justify; line-height: 1.2; }
+#aboutme > img {
+  grid-column: 2; grid-row: 2; z-index: 1; position: relative;
+  justify-self: center;
+  width: 16.5rem; height: 22rem; object-fit: cover;
+  margin: calc(var(--bar) + 1.5rem) 0 1.5rem;
+  width: min(16.5rem, 55%); aspect-ratio: 3 / 4; object-fit: cover;
 }
+#aboutme::after { grid-column: 2; grid-row: 2; align-self: stretch; border-radius: 1.6rem; }
+#aboutme > h3 { grid-column: 2; grid-row: 3; margin-top: 1rem; }
+#aboutme > ul { grid-column: 2; grid-row: 4; margin-top: 0.8rem; display: grid; gap: 0.8rem; }
+#aboutme a { text-decoration: none; }
+#aboutme li:last-child a { text-decoration: underline; }
+#aboutme li { overflow-wrap: anywhere; }
 
-.about-side .terminal {
-  --chrome: clamp(0.7rem, 1.46vw, 1.75rem);
-}
+#skill { display: flex; flex-direction: column; padding: 1rem var(--edge) 4.6rem; }
+#skill::before { top: 7rem; }
+#skill > h2 { margin-bottom: 1.4rem; margin-left: calc(var(--inset) * -1); }
+#skill > ul { margin: calc(var(--bar) + 1.6rem) 0 0 var(--inset); color: var(--green); }
+#skill li { padding-left: 2ch; }
+#skill li + li { margin-top: 3rem; }
+#skill strong { display: block; margin-left: -2ch; font-weight: 500; }
 
-.about-side .terminal-body {
-  padding: 1.3vw 0;
-}
-
-.profile-photo {
-  width: clamp(7rem, 33%, 16.5rem);
-  aspect-ratio: 3 / 4;
-  margin-inline: auto;
-  object-fit: cover;
-}
-
-.contact-list {
+#experience {
   display: grid;
-  gap: 0.75vw;
-  margin: 1.3vw 0 0;
-  padding: 0;
-  font-size: var(--fs-body);
-  list-style: none;
+  grid-template-columns: 1fr auto;
+  align-content: start;
+  column-gap: 2rem;
+  padding: 1rem calc(var(--edge) + var(--inset)) 4.6rem;
 }
+#experience::before { top: 7rem; }
+#experience > h2 { grid-column: 1 / -1; margin-bottom: 1.4rem; margin-left: calc(var(--inset) * -1); }
+#experience > :not(h2) { color: var(--green); }
+#experience > h3 { grid-column: 1 / -1; margin: calc(var(--bar) + 1.6rem) 0 1.5rem; }
+#experience > h4 { grid-column: 1; }
+#experience > p { grid-column: 2; text-align: right; }
+#experience > p em { font-style: normal; }
+#experience > h4:not(:first-of-type), #experience > h4:not(:first-of-type) + p { margin-top: 1.5rem; }
+#experience > ul { grid-column: 1 / -1; }
+#experience li { position: relative; padding-left: 2ch; }
+#experience li::before { content: "\2022"; position: absolute; left: 0.65ch; }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.6rem, 1.9vw, 2.3rem);
+footer { background: var(--red); padding: 3rem 1rem; text-align: center; font-size: 1.75rem; line-height: 1.2; }
+
+@media (min-width: 601px) and (max-width: 900px) {
+  html { font-size: 8px; }
+  :root { --nav-h: 6rem; }
+  body { font-size: 2.4rem; }
+  main h2 { font-size: 3.6rem; }
+  nav ul { gap: 1.6rem; padding: 0 1.5rem; font-size: 2.2rem; }
+
+  #home { padding: calc(2rem + var(--bar)) 1.5rem 2rem; }
+  #home::before { top: 2rem; left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+  #home h1, #home h2, #home h3 { font-size: 5rem; }
+
+  #aboutme { grid-template-columns: 1fr; row-gap: 2rem; padding: 3rem 1.5rem 2rem; }
+  #aboutme > p { grid-row: 2; }
+  #aboutme > img, #aboutme::after { grid-column: 1; grid-row: 3; }
+  #aboutme > img { width: 22.5rem; height: 30rem; }
+  #aboutme > h3 { grid-column: 1; grid-row: 4; margin-top: 0; }
+  #aboutme > ul { grid-column: 1; grid-row: 5; }
+
+  #skill, #experience { --edge: 1.5rem; --inset: 1.6rem; }
+  #experience { grid-template-columns: 1fr; }
+  #experience > p { grid-column: 1; text-align: left; }
+  #experience > h4:not(:first-of-type) + p { margin-top: 0; }
 }
-
-.contact-icon {
-  flex: none;
-  width: clamp(1.5rem, 2.9vw, 3.5rem);
-  height: auto;
-}
-
-.contact-item a {
-  overflow-wrap: anywhere;
-  text-decoration: none;
-}
-
-.contact-item a[href^="mailto:"] {
-  text-decoration: underline;
-}
-
-/* ---------- Skill (Slide 7) & Experience (Slide 8) ---------- */
-.skill,
-.experience {
-  padding: 1.2vw var(--pad-x) 1.3vw;
-}
-
-.skill .terminal,
-.experience .terminal {
-  --chrome: clamp(0.8rem, 2vw, 2.4rem);
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-.skill .terminal-body,
-.experience .terminal-body {
-  flex: 1;
-}
-
-/* Skill */
-.skill .terminal-body {
-  padding: 0.7em 0.55em;
-}
-
-.skill-name,
-.skill-desc {
-  margin: 0;
-}
-
-.skill-desc {
-  padding-left: 2ch; /* sejajar dengan nama setelah "> " */
-}
-
-.skill-item + .skill-item {
-  margin-top: 1.2em;
-}
-
-/* Experience */
-.experience .terminal-body {
-  padding: 1.1em 0.4em 1em;
-}
-
-.exp-label {
-  margin: 0 0 0.65em;
-}
-
-.exp-item + .exp-item {
-  margin-top: 0.6em; /* di slide jaraknya 0, ubah ke 0 jika ingin persis */
-}
-
-.exp-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  column-gap: 1.5em;
-}
-
-.exp-company,
-.exp-meta {
-  margin: 0;
-}
-
-.exp-meta {
-  margin-left: auto;
-  text-align: right;
-}
-
-.exp-list {
-  margin: 0;
-  padding-left: 1.2em;
-  list-style: disc;
-}
-
-/* ---------- Footer (Slide 9) ---------- */
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.9vw 1rem 2.2vw;
-  background: var(--red);
-  color: #fff;
-  font-size: var(--fs-footer);
-  text-align: center;
-}
-
-.footer-brand {
-  margin: 0 0 0.4em;
-  font-size: var(--fs-brand);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.footer-copy {
-  margin: 0;
-  line-height: 1.2;
-}
-
-.footer-icons {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.45vw, 3rem);
-  margin-top: 0.6em;
-}
-
-.footer-icons a {
-  display: block;
-  line-height: 0;
-}
-
-.footer-icons img,
-.footer-icons svg {
-  width: clamp(1.5rem, 2vw, 2.4rem);
-  height: auto;
-}
-
-/* ---------- Mobile ---------- */
-@media (max-width: 800px) {
-  :root {
-    --nav-h: 3.25rem;
-  }
-
-  .navbar {
-    padding: 0 1rem;
-  }
-
-  .home {
-    padding: 1rem 1rem 0.75rem;
-  }
-
-  .about {
-    padding-top: 1.5rem;
-  }
-
-  .about .section-title {
-    margin-bottom: 1rem;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-    row-gap: 1.5rem;
-    padding-right: 0;
-  }
-
-  .about-text {
-    text-align: left;
-  }
-
-  .about-side .terminal-body {
-    padding: 1rem 0;
-  }
-
-  .contact-list {
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .skill,
-  .experience {
-    padding-top: 0.75rem;
-  }
-
-  .section-title {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer {
-    padding: 1.5rem 1rem;
-  }
+@media (max-width: 600px) {
+  html { font-size: 8px; }
+  :root { --nav-h: 6rem; }
+  body { font-size: 2.4rem; }
+  main h2 { font-size: 3.6rem; }
+  nav ul { gap: 1.6rem; padding: 0 1.5rem; font-size: 2.2rem; }
+ 
+  #home { padding: calc(2rem + var(--bar)) 1.5rem 2rem; }
+  #home::before { top: 2rem; left: 1.5rem; right: 1.5rem; bottom: 2rem; }
+  #home h1, #home h2, #home h3 { font-size: 3.7rem; }
+ 
+  #aboutme { padding: 3rem 1.5rem 2rem; }
+  #aboutme > img { width: 22.5rem; height: 30rem; }
+  #aboutme > img { width: min( 80rem, 70%); }
+ 
+  #skill, #experience { --edge: 1.5rem; --inset: 1.6rem; }
 }
