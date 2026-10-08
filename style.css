@@ -39,7 +39,7 @@ main h2 { font-size: 4.7rem; line-height: 1.2; }
 
 
 header { position: sticky; top: 0 ; z-index: 10; background: #fff; color: #000; }
-nav ul { display: flex; align-items: center; gap: 2.6rem; height: var(--nav-h); padding: 0 4rem; }
+nav ul { display: flex; align-items: center; gap: 2.6rem; height: var(--nav-h); padding: 0 2.7rem; }
 nav a { text-decoration: none; }
 nav a:hover { color: var(--blue); }
 
@@ -142,7 +142,7 @@ footer { background: var(--red); padding: 3rem 1rem; text-align: center; font-si
 
 @media (min-width: 601px) and (max-width: 900px) {
   html { font-size: 8px; }
-  :root { --nav-h: 6rem; }
+  :root { --nav-h: 4.7rem; }
   body { font-size: 2.4rem; }
   main h2 { font-size: 3.6rem; }
   nav ul { gap: 1.6rem; padding: 0 1.5rem; font-size: 2.2rem; }
@@ -165,7 +165,7 @@ footer { background: var(--red); padding: 3rem 1rem; text-align: center; font-si
 }
 @media (max-width: 600px) {
   html { font-size: 8px; }
-  :root { --nav-h: 6rem; }
+  :root { --nav-h: 3.7rem; }
   body { font-size: 2.4rem; }
   main h2 { font-size: 3.6rem; }
   nav ul { gap: 1.6rem; padding: 0 1.5rem; font-size: 2.2rem; }
@@ -176,7 +176,12 @@ footer { background: var(--red); padding: 3rem 1rem; text-align: center; font-si
  
   #aboutme { padding: 3rem 1.5rem 2rem; }
   #aboutme > img { width: 22.5rem; height: 30rem; }
-  #aboutme > img { width: min( 80rem, 70%); }
+  #aboutme { grid-template-columns: minmax(0, 1fr); row-gap: 2rem; padding: 3rem 1.5rem 2rem; }
+  #aboutme > p { grid-row: 2; }
+  #aboutme > img, #aboutme::after { grid-column: 1; grid-row: 3; }
+  #aboutme > h3 { grid-column: 1; grid-row: 4; margin-top: 0; }
+  #aboutme > ul { grid-column: 1; grid-row: 5; }
+  #aboutme > img { width: min(22.5rem, 60%); }
  
   #skill, #experience { --edge: 1.5rem; --inset: 1.6rem; }
 }
